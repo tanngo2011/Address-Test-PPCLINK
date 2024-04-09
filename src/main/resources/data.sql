@@ -21,11 +21,11 @@ VALUE                (626,       "Bạc Liêu"	  ,  "Thành phố" ,       "Thà
 
 
 INSERT INTO ward (id,     province_id, district_id,         unit,         ward_name)
-VALUE                (13122,    3,	         628,	            "Phường" ,        "1"   ),
-                     (13124,    3,	         628,	            "Xã"	 ,    "Phong Thạnh Đông" ),
-                     (13126,    3,	         628,	            "Xã"	 ,    "Phong Tân"      ),
-                     (13128,    3,	         628,	            "Xã"	 ,    "Phong Thạnh"),
-                     (13129,    3,	         628,	            "Xã"	 ,    "Phong Thạnh A"),
-                     (13130,    3,	         628,	            "Xã"	 ,    "Phong Thạnh Tây"),
-                     (13131,    3,	         628,	            "Xã"	 ,    "Tân Thạnh");
+VALUE            (13122,    3,	         628,	            "Phường" ,        "1"   ),
+                 (13124,    3,	         628,	            "Xã"	 ,    "Phong Thạnh Đông" ),
+                 (13126,    3,	         628,	            "Xã"	 ,    "Phong Tân"      ),
+                 (13128,    3,	         628,	            "Xã"	 ,    "Phong Thạnh"),
+                 (13129,    3,	         628,	            "Xã"	 ,    "Phong Thạnh A"),
+                 (13130,    3,	         628,	            "Xã"	 ,    "Phong Thạnh Tây"),
+                 (13131,    3,	         628,	            "Xã"	 ,    "Tân Thạnh");
 
