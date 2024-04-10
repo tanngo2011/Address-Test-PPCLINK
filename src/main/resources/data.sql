@@ -1,6 +1,6 @@
 INSERT INTO province (id,        province_name)
 
-VALUE                (3,       	 "Bạc Liêu"   ),
+VALUE                 (3,         "Bạc Liêu"   ),
                       (5,         "Bắc Giang"  ),
                       (6,         "Bắc Ninh"   ),
                       (9,         "Bình Định"  ),
@@ -9,13 +9,34 @@ VALUE                (3,       	 "Bạc Liêu"   ),
 
 
 INSERT INTO district (id,   district_name,          unit,             full_name,                     province_id)
-VALUE                (626,       "Bạc Liêu"	  ,  "Thành phố" ,       "Thành phố Bạc Liêu, Bạc Liêu",  	    3       ),
-                     (627,   	"Đông Hải"	  ,  	"Huyện",       "Huyện Đông Hải, Bạc Liêu"      ,       3      ),
-                     (628,   	"Giá Rai",	"Thị xã",       "Thị xã Giá Rai, Bạc Liêu"     ,        3      ),
+VALUE                (626,       "Bạc Liêu"	  ,  "Thành phố" ,       "Thành phố Bạc Liêu, Bạc Liêu",      3      ),
+                     (627,   	"Đông Hải"	  ,  	"Huyện",       "Huyện Đông Hải, Bạc Liêu"      ,      3      ),
+                     (628,   	"Giá Rai",	        "Thị xã",       "Thị xã Giá Rai, Bạc Liêu"     ,      3      ),
                      (629,   	"Hoà Bình	  "  ,	"Huyện",      "Huyện Hoà Bình, Bạc Liêu"      ,       3      ),
                      (630,   	"Hồng Dân	  "  ,	"Huyện",      "Huyện Hồng Dân, Bạc Liêu"      ,       3      ),
                      (631,   	"Phước Long	  "  ,	"Huyện",      "Huyện Phước Long, Bạc Liêu"    ,       3      ),
-                     (632,   	"Vĩnh Lợi	  "  ,	"Huyện",      "Huyện Vĩnh Lợi, Bạc Liêu"      ,       3      );
+                     (632,   	"Vĩnh Lợi	  "  ,	"Huyện",      "Huyện Vĩnh Lợi, Bạc Liêu"      ,       3      ),
+
+                     (367,      "Bắc Giang",    "Thành phố",       "Thành phố Bắc Giang, Bắc Giang",      	5	 ),
+                     (368,      "Hiệp Hòa",      "Huyện",           "Huyện Hiệp Hòa, Bắc Giang",        	5	 ),
+                     (369,      "Lạng Giang",    "Huyện",           "Huyện Lạng Giang, Bắc Giang",        	5	 ),
+                     (370,      "Lục Nam",      "Huyện",           "Huyện Lục Nam, Bắc Giang",           	5	 ),
+                     (371,      "Lục Ngạn",     "Huyện",           "Huyện Lục Ngạn, Bắc Giang",          	5	 ),
+                     (372,      "Sơn Động",     "Huyện",           "Huyện Sơn Động, Bắc Giang",        	    5	 ),
+                     (373,      "Tân Yên",      "Huyện",           "Huyện Tân Yên, Bắc Giang",            	5	 ),
+                     (374,      "Việt Yên",     "Huyện",           "Huyện Việt Yên, Bắc Giang",          	5	 ),
+                     (375,      "Yên Dũng",     "Huyện",           "Huyện Yên Dũng, Bắc Giang",         	5	 ),
+                     (376,      "Yên Thế",      "Huyện ",           "Huyện Yên Thế, Bắc Giang",            	5	 );
+
+
+
+
+
+
+
+
+
+
 
 
 

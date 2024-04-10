@@ -2,6 +2,7 @@ package address.Backend.controller;
 
 import address.Backend.entity.District;
 import address.Backend.entity.Province;
+import address.Backend.form.DistrictFilterForm;
 import address.Backend.service.DistrictService;
 import address.Backend.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,19 @@ public class DistrictController {
         return listDistrict;
     }
 
+
+    @GetMapping("/api/v1/districts")
+    @ResponseStatus(HttpStatus.OK)
+    public List<District> findAll(DistrictFilterForm form) {
+        List<District> listDistrict = districtService.findAll(form);
+        return listDistrict;
+    }
+
+
+    @GetMapping("/api/v1/districts/input")
+    @ResponseStatus(HttpStatus.OK)
+    public List<District> findByInput(DistrictFilterForm form) {
+        return districtService.findByInput(form);
+    }
 
 }
