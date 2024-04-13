@@ -16,4 +16,12 @@ public interface DistrictRepository extends
 
     @Query("FROM District WHERE province.id = :province_id")
     public List<District> findByProvinceId(@Param("province_id") Long provinceId);
+
+
+    @Query(nativeQuery = true, value = "SELECT district.id, district.district_name, district.full_name, district.province_id, district.unit FROM district\n" +
+            "LEFT JOIN ward ON district.id = ward.district_id\n" +
+            "WHERE ward.id = :wardId")
+    public List<District> findByWardId(@Param("wardId") Long wardId);
+
+
 }

@@ -28,5 +28,4 @@ public class Ward {
     @JoinColumn(name = "district_id", referencedColumnName = "id")
     private District district;
 
-
 }

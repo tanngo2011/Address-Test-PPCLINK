@@ -1,5 +1,6 @@
 package address.Backend.service;
 
+import address.Backend.dto.DistrictDto;
 import address.Backend.entity.District;
 import address.Backend.entity.Province;
 import address.Backend.form.DistrictFilterForm;
@@ -21,5 +22,8 @@ public interface DistrictService {
 
 
     public List<District> findByInput(DistrictFilterForm form);
+
+
+    public List<District> findByWardId(Long wardId);
 
 }

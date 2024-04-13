@@ -35,13 +35,21 @@ public class WardController {
 
 
 
-    @GetMapping("/api/v1/wards/{districtId}")
+    @GetMapping("/api/v1/wards/district/{districtId}")
     @ResponseStatus(HttpStatus.OK)
     public List<Ward> findByDistrictId(@PathVariable("districtId") Long districtId) {
         List<Ward> listWard = wardService.findByDistrictId(districtId);
         return listWard;
     }
 
+
+
+    @GetMapping("/api/v1/wards/province/{provinceId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Ward> findByProvinceId(@PathVariable("provinceId") Long provinceId) {
+        List<Ward> listWard = wardService.findByProvinceId(provinceId);
+        return listWard;
+    }
 
     @GetMapping("/api/v1/wards/input")
     @ResponseStatus(HttpStatus.OK)

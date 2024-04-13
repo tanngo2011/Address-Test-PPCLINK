@@ -16,4 +16,7 @@ public interface WardRepository extends
 
     @Query("FROM Ward WHERE district.id = :district_id")
     public List<Ward> findByDistrictId(@Param("district_id") Long districtId);
+
+
+    public List<Ward> findByProvinceId(Long provinceId);
 }

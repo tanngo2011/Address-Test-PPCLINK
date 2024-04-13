@@ -1,5 +1,6 @@
 package address.Backend.service;
 
+import address.Backend.dto.DistrictDto;
 import address.Backend.entity.District;
 import address.Backend.entity.Province;
 import address.Backend.form.DistrictFilterForm;
@@ -7,12 +8,14 @@ import address.Backend.repository.DistrictRepository;
 import address.Backend.repository.ProvinceRepository;
 import address.Backend.specification.DistrictSpecification;
 import address.Backend.specification.ProvinceSpecification;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DistrictServiceImpl implements DistrictService {
@@ -20,11 +23,19 @@ public class DistrictServiceImpl implements DistrictService {
 
     private final DistrictRepository districtRepository;
 
+    private ModelMapper modelMapper;
+
 
     @Autowired
-    public DistrictServiceImpl(DistrictRepository districtRepository) {
+    public DistrictServiceImpl(
+            DistrictRepository districtRepository,
+            ModelMapper modelMapper
+    ) {
         this.districtRepository = districtRepository;
+        this.modelMapper = modelMapper;
     }
+
+
 
 
     @Override
@@ -33,12 +44,18 @@ public class DistrictServiceImpl implements DistrictService {
         return districtRepository.findAll(spec);
     }
 
+
+
     @Override
     public List<District> findByProvinceId(Long provinceId) {
 
         List<District> listDistrict = districtRepository.findByProvinceId(provinceId);
         return listDistrict;
     }
+
+
+
+
 
     @Override
     public List<District> findByInput(DistrictFilterForm form) {
@@ -95,5 +112,11 @@ public class DistrictServiceImpl implements DistrictService {
 
 
         return districtListOutput;
+    }
+
+
+    @Override
+    public List<District> findByWardId(Long wardId) {
+        return districtRepository.findByWardId(wardId);
     }
 }

@@ -1,10 +1,12 @@
 package address.Backend.service;
 
+import address.Backend.dto.ProvinceDto;
 import address.Backend.entity.Province;
 import address.Backend.form.ProvinceFilterForm;
 import address.Backend.repository.DistrictRepository;
 import address.Backend.repository.ProvinceRepository;
 import address.Backend.specification.ProvinceSpecification;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,20 +15,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProvinceServiceImpl implements ProvinceService {
 
 
     private final ProvinceRepository provinceRepository;
-    private final DistrictRepository districtRepository;
+    private final ModelMapper modelMapper;
 
 
     @Autowired
     public ProvinceServiceImpl(ProvinceRepository provinceRepository,
-                               DistrictRepository districtRepository) {
+                               DistrictRepository districtRepository,
+                               ModelMapper modelMapper) {
         this.provinceRepository = provinceRepository;
-        this.districtRepository = districtRepository;
+        this.modelMapper = modelMapper;
     }
 
 
@@ -99,6 +103,18 @@ public class ProvinceServiceImpl implements ProvinceService {
 
 
         return provinceListOutput;
+    }
+
+
+
+    @Override
+    public List<Province> findByWardId(Long wardId) {
+        return provinceRepository.findByWardId(wardId);
+    }
+
+    @Override
+    public List<Province> findByDistrictId(Long districtId) {
+        return provinceRepository.findByDistrictId(districtId);
     }
 
 }

@@ -34,6 +34,11 @@ public class WardServiceImpl implements WardService {
     }
 
     @Override
+    public List<Ward> findByProvinceId(Long provinceId) {
+        return wardRepository.findByProvinceId(provinceId);
+    }
+
+    @Override
     public List<Ward> findAll(WardFilterForm form) {
         Specification<Ward> spec = WardSpecification.buildSpec(form);
         return wardRepository.findAll(spec);

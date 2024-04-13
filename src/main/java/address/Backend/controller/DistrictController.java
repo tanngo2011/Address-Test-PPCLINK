@@ -1,5 +1,6 @@
 package address.Backend.controller;
 
+import address.Backend.dto.DistrictDto;
 import address.Backend.entity.District;
 import address.Backend.entity.Province;
 import address.Backend.form.DistrictFilterForm;
@@ -24,11 +25,20 @@ public class DistrictController {
     }
 
 
-    @GetMapping("/api/v1/districts/{provinceId}")
+    @GetMapping("/api/v1/districts/province/{provinceId}")
     @ResponseStatus(HttpStatus.OK)
     public List<District> findByProvinceId(@PathVariable("provinceId") Long provinceId) {
         List<District> listDistrict = districtService.findByProvinceId(provinceId);
         return listDistrict;
+    }
+
+
+
+    @GetMapping("/api/v1/districts/ward/{wardId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<District> findByWardId(@PathVariable("wardId") Long wardId) {
+        List<District> districts = districtService.findByWardId(wardId);
+        return districts;
     }
 
 

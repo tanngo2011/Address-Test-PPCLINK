@@ -41,5 +41,19 @@ public class ProvinceController {
     }
 
 
+    @GetMapping("/api/v1/provinces/ward/{wardId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Province> findByWardId(@PathVariable("wardId") Long wardId) {
+        List<Province> provinces = provinceService.findByWardId(wardId);
+        return provinces;
+    }
+
+
+    @GetMapping("/api/v1/provinces/district/{districtId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Province> findByDistrictId(@PathVariable("districtId") Long districtId) {
+        List<Province> provinces = provinceService.findByDistrictId(districtId);
+        return provinces;
+    }
 
 }
