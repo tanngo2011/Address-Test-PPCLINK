@@ -11,9 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,9 +34,11 @@ public class BackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
+//
 //		String[] nextLine;
+//
 //		try (CSVReader reader = new CSVReader(new FileReader("district.csv"))) {
+//
 //			while ((nextLine = reader.readNext()) != null) {
 //				// Truy cập đến từng giá trị trong dòng hiện tại
 //				for (String value : nextLine) {
