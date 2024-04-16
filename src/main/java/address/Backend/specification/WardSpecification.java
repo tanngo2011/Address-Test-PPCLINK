@@ -16,14 +16,14 @@ import java.util.List;
 
 public class WardSpecification {
 
-    public static Specification<Ward> buildSpec(WardFilterForm form) {
+    public static Specification<Ward> buildSpec(String form) {
 
         return form == null ? null : new Specification<Ward>() {
             @Override
             public Predicate toPredicate(Root<Ward> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
                 List<Predicate> predicates = new ArrayList<>(); //--> Tạo danh sách điều kiện
 
-                String wardInput = form.getWardInput();
+                String wardInput = form;
 
 
                 if (StringUtils.hasText(wardInput)) {

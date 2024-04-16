@@ -11,7 +11,5 @@ import lombok.Setter;
 @Setter
 public class ProvinceDto {
 
-    private Long id;
-
     private String provinceName;
 }

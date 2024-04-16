@@ -12,16 +12,7 @@ import java.util.List;
 @Setter
 public class DistrictDto {
 
-
-    //Thử làm theo cách bro Vanh hướng dẫn: tạo ra một trường tên viết tắt trong
-    private Long id;
-
     private String districtName;
 
-    private String unit;
-
-    private String fullname;
-
-    private Long provinceId;
 
 }

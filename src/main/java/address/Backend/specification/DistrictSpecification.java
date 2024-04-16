@@ -16,14 +16,14 @@ import java.util.List;
 
 public class DistrictSpecification {
 
-    public static Specification<District> buildSpec(DistrictFilterForm form) {
+    public static Specification<District> buildSpec(String form) {
 
         return form == null ? null : new Specification<District>() {
             @Override
             public Predicate toPredicate(Root<District> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
                 List<Predicate> predicates = new ArrayList<>(); //--> Tạo danh sách điều kiện
 
-                String districtInput = form.getDistrictInput();
+                String districtInput = form;
 
 
                 if (StringUtils.hasText(districtInput)) {

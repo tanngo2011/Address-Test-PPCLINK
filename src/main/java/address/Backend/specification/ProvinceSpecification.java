@@ -17,14 +17,14 @@ import java.util.List;
 public class ProvinceSpecification {
 
 
-    public static Specification<Province> buildSpec(ProvinceFilterForm form) {
+    public static Specification<Province> buildSpec(String form) {
 
         return form == null ? null : new Specification<Province>() {
             @Override
             public Predicate toPredicate(Root<Province> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
                 List<Predicate> predicates = new ArrayList<>(); //--> Tạo danh sách điều kiện
 
-                String provinceInput = form.getProvinceInput();
+                String provinceInput = form;
 
 
                 if (StringUtils.hasText(provinceInput)) {

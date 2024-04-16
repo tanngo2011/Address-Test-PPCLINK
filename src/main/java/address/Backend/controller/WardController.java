@@ -28,7 +28,7 @@ public class WardController {
 
     @GetMapping("/api/v1/wards")
     @ResponseStatus(HttpStatus.OK)
-    public List<Ward> findAll(WardFilterForm form) {
+    public List<Ward> findAll(String form) {
         List<Ward> listWard = wardService.findAll(form);
         return listWard;
     }
@@ -53,7 +53,7 @@ public class WardController {
 
     @GetMapping("/api/v1/wards/input")
     @ResponseStatus(HttpStatus.OK)
-    public List<Ward> findByInput(WardFilterForm form) {
+    public List<Ward> findByInput(String form) {
         return wardService.findByInput(form);
     }
 

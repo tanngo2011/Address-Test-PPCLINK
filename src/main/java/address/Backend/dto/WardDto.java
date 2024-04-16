@@ -12,13 +12,6 @@ import lombok.Setter;
 @Setter
 public class WardDto {
 
-    private Long id;
-
     private String wardName;
 
-    private String unit;
-
-    private Long provinceId;
-
-    private Long districtId;
 }

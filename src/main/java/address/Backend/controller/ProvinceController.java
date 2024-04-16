@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 public class ProvinceController {
 
+
     private final ProvinceService provinceService;
 
 
@@ -26,7 +27,7 @@ public class ProvinceController {
 
     @GetMapping("/api/v1/provinces")
     @ResponseStatus(HttpStatus.OK)
-    public List<Province> findAll(ProvinceFilterForm form) {
+    public List<Province> findAll(String form) {
         List<Province> listProvince = provinceService.findAll(form);
         return listProvince;
     }
@@ -35,7 +36,7 @@ public class ProvinceController {
 
     @GetMapping("/api/v1/provinces/input")
     @ResponseStatus(HttpStatus.OK)
-    public List<Province> findByInput(ProvinceFilterForm form) {
+    public List<Province> findByInput(String form) {
         List<Province> listProvince = provinceService.findByInput(form);
         return listProvince;
     }

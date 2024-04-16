@@ -39,7 +39,7 @@ public class DistrictServiceImpl implements DistrictService {
 
 
     @Override
-    public List<District> findAll(DistrictFilterForm form) {
+    public List<District> findAll(String form) {
         Specification<District> spec = DistrictSpecification.buildSpec(form);
         return districtRepository.findAll(spec);
     }
@@ -58,7 +58,7 @@ public class DistrictServiceImpl implements DistrictService {
 
 
     @Override
-    public List<District> findByInput(DistrictFilterForm form) {
+    public List<District> findByInput(String form) {
 
         //Khai báo một list các Province để trả về cho người dùng
         List<District> districtListOutput = new ArrayList<>();
@@ -99,7 +99,7 @@ public class DistrictServiceImpl implements DistrictService {
             //so sánh string vừa tạo (từ tên Province): nếu string vừa tạo có chứa provinceInput
             //mà người dùng nhập vào, thì thêm Province mà string đó được tạo từ vào trong List
             //provinceListOutPut
-            if (string.contains(form.getDistrictInput().toLowerCase())) {
+            if (string.contains(form.toLowerCase())) {
                 districtListOutput.add(district);
             }
 

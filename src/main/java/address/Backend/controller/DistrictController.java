@@ -44,7 +44,7 @@ public class DistrictController {
 
     @GetMapping("/api/v1/districts")
     @ResponseStatus(HttpStatus.OK)
-    public List<District> findAll(DistrictFilterForm form) {
+    public List<District> findAll(String form) {
         List<District> listDistrict = districtService.findAll(form);
         return listDistrict;
     }
@@ -52,7 +52,7 @@ public class DistrictController {
 
     @GetMapping("/api/v1/districts/input")
     @ResponseStatus(HttpStatus.OK)
-    public List<District> findByInput(DistrictFilterForm form) {
+    public List<District> findByInput(String form) {
         return districtService.findByInput(form);
     }
 

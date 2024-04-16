@@ -39,14 +39,14 @@ public class WardServiceImpl implements WardService {
     }
 
     @Override
-    public List<Ward> findAll(WardFilterForm form) {
+    public List<Ward> findAll(String form) {
         Specification<Ward> spec = WardSpecification.buildSpec(form);
         return wardRepository.findAll(spec);
     }
 
 
     @Override
-    public List<Ward> findByInput(WardFilterForm form) {
+    public List<Ward> findByInput(String form) {
         //Khai báo một list các Province để trả về cho người dùng
         List<Ward> wardListOutput = new ArrayList<>();
 
@@ -86,7 +86,7 @@ public class WardServiceImpl implements WardService {
             //so sánh string vừa tạo (từ tên Province): nếu string vừa tạo có chứa provinceInput
             //mà người dùng nhập vào, thì thêm Province mà string đó được tạo từ vào trong List
             //provinceListOutPut
-            if (string.contains(form.getWardInput().toLowerCase())) {
+            if (string.contains(form.toLowerCase())) {
                 wardListOutput.add(ward);
             }
 

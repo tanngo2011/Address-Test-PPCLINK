@@ -26,17 +26,23 @@ public class ProvinceServiceImpl implements ProvinceService {
 
 
     @Autowired
-    public ProvinceServiceImpl(ProvinceRepository provinceRepository,
-                               DistrictRepository districtRepository,
-                               ModelMapper modelMapper) {
+    public ProvinceServiceImpl(
+            ProvinceRepository provinceRepository,
+            DistrictRepository districtRepository,
+            ModelMapper modelMapper
+    ) {
         this.provinceRepository = provinceRepository;
         this.modelMapper = modelMapper;
     }
 
 
+    @Override
+    public Province findById(Long provinceId) {
+        return provinceRepository.findById(provinceId).get();
+    }
 
     @Override
-    public List<Province> findAll(ProvinceFilterForm form) {
+    public List<Province> findAll(String form) {
         Specification<Province> spec = ProvinceSpecification.buildSpec(form); //--> buildSpec là Method static nên có thể được gọi trực tiếp từ Class
 //        Specification.where(spec);
         return provinceRepository.findAll(spec);
@@ -48,8 +54,10 @@ public class ProvinceServiceImpl implements ProvinceService {
 
 
 
+
+
     @Override
-    public List<Province> findByInput(ProvinceFilterForm form) {
+    public List<Province> findByInput(String form) {
 
         //Khai báo một list các Province để trả về cho người dùng
         List<Province> provinceListOutput = new ArrayList<>();
@@ -90,7 +98,7 @@ public class ProvinceServiceImpl implements ProvinceService {
             //so sánh string vừa tạo (từ tên Province): nếu string vừa tạo có chứa provinceInput
             //mà người dùng nhập vào, thì thêm Province mà string đó được tạo từ vào trong List
             //provinceListOutPut
-            if (string.contains(form.getProvinceInput().toLowerCase())) {
+            if (string.contains(form.toLowerCase())) {
                 provinceListOutput.add(province);
             }
 
@@ -106,7 +114,6 @@ public class ProvinceServiceImpl implements ProvinceService {
     }
 
 
-
     @Override
     public List<Province> findByWardId(Long wardId) {
         return provinceRepository.findByWardId(wardId);
@@ -116,5 +123,8 @@ public class ProvinceServiceImpl implements ProvinceService {
     public List<Province> findByDistrictId(Long districtId) {
         return provinceRepository.findByDistrictId(districtId);
     }
+
+
+
 
 }

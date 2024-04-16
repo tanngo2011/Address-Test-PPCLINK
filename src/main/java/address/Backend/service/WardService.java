@@ -14,7 +14,7 @@ public interface WardService {
 
     public List<Ward> findByProvinceId(Long provinceId);
 
-    public List<Ward> findAll(WardFilterForm form);
+    public List<Ward> findAll(String form);
 
-    public List<Ward> findByInput(WardFilterForm form);
+    public List<Ward> findByInput(String form);
 }

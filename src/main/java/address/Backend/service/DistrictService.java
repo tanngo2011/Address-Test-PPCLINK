@@ -16,12 +16,12 @@ import java.util.List;
 public interface DistrictService {
 
 
-    public List<District> findAll(DistrictFilterForm form);
+    public List<District> findAll(String form);
 
     public List<District> findByProvinceId(Long provinceId);
 
 
-    public List<District> findByInput(DistrictFilterForm form);
+    public List<District> findByInput(String form);
 
 
     public List<District> findByWardId(Long wardId);

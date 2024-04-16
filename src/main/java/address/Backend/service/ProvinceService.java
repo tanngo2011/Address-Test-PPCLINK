@@ -13,12 +13,15 @@ import java.util.List;
 public interface ProvinceService {
 
 
-    public List<Province> findAll(ProvinceFilterForm form);
+    public Province findById(Long provinceId);
+
+    public List<Province> findAll(String form);
 
 
-    public List<Province> findByInput(ProvinceFilterForm form);
+    public List<Province> findByInput(String form);
 
     public List<Province> findByWardId(Long wardId);
+
 
     public List<Province> findByDistrictId(Long districtId);
 

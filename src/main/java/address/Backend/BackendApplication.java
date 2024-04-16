@@ -1,11 +1,13 @@
 package address.Backend;
 
 import address.Backend.entity.Ward;
+import address.Backend.service.FileService;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,6 +20,14 @@ import java.util.stream.Collectors;
 @SpringBootApplication
 public class BackendApplication implements CommandLineRunner {
 
+
+
+	@Autowired
+	private FileService fileService;
+
+
+
+
 	public static void main(String[] args) throws IOException, CsvValidationException {
 		SpringApplication.run(BackendApplication.class, args);
 	}
@@ -28,7 +38,6 @@ public class BackendApplication implements CommandLineRunner {
 	public static ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
-
 
 
 
@@ -46,5 +55,12 @@ public class BackendApplication implements CommandLineRunner {
 //				}
 //			}
 //		}
+
+
+		//Khi chương trình được khởi chạy: import file excel vào
+		File file = new File("Addresses.xlsx");
+		fileService.importFile(file);
+
+
 	}
 }

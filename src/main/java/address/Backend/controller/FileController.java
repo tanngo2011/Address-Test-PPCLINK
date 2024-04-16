@@ -21,8 +21,8 @@ public class FileController {
 
     @PostMapping("/api/v1/import")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> findAll(@RequestParam MultipartFile file) throws IOException {
-        fileService.importFIle(file);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public String findAll(@RequestParam MultipartFile file) throws IOException {
+        fileService.importFileTest1(file);
+        return "Thử Nghiệm import File!!!";
     }
 }
