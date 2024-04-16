@@ -75,7 +75,7 @@ public class DistrictServiceImpl implements DistrictService {
         //Lặp qua từng Province trong list Province:
         for (District district : districtList) {
             //Lấy ra name của Province đó:
-            String dataName = district.getFullname().toLowerCase();
+            String dataName = district.getDistrictName().toLowerCase();
 
             //tách name ra thành words:
             String[] dataWord = dataName.split(" ");

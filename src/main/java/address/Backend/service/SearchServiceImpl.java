@@ -47,63 +47,116 @@ public class SearchServiceImpl implements SearchService {
 
     }
 
+    public Set<String> addProvince(List<Province> provinces) {
+        Set<String> stringSet = new LinkedHashSet<>();
+        if (!provinces.isEmpty()) {
+            for (Province province : provinces) {
+                if (province.getProvinceName() != null)
+                    stringSet.add(province.getProvinceName());
+            }
+        }
+        return stringSet;
+    }
+
+
+
+    public Set<String> addDistrict(List<District> districts) {
+        Set<String> stringSet = new LinkedHashSet<>();
+        String districtName = "";
+        String wardName = "";
+        if (!districts.isEmpty()) {
+            for (District district : districts) {
+                if (district.getDistrictName() != null) {
+
+                    List<Province> provinces = provinceRepository.findByDistrictId(district.getId());
+                    for (Province province : provinces) {
+                        districtName = district.getDistrictName() + ", "
+                                + province.getProvinceName();
+                        stringSet.add(districtName);
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+
+    public Set<String> addWard(List<Ward> wards) {
+        Set<String> stringSet = new LinkedHashSet<>();
+        String districtName = "";
+        String wardName = "";
+        String provinceName = "";
+        if (!wards.isEmpty()) {
+            for (Ward ward : wards) {
+                if (ward.getWardName() != null) {
+
+//                    stringSet.add(wardName);
+
+                    List<Province> provinces = provinceRepository.findByWardId(ward.getId());
+                    for (Province province : provinces) {
+                        provinceName = province.getProvinceName();
+                    }
+
+                    List<District> districts = districtRepository.findByWardId(ward.getId());
+                    for (District district : districts) {
+                        districtName = district.getDistrictName();
+                    }
+
+                    wardName = ward.getUnit() + " " + ward.getWardName()
+                            + ", " + districtName
+                            + ", " + provinceName;
+                    stringSet.add(wardName);
+                }
+            }
+        }
+
+        return stringSet;
+    }
+
+
 
 
     @Override
     public Set<String> search(String form) {
         Set<String> stringSet = new LinkedHashSet<>();
 
+
         List<Province> provinces1 = provinceService.findAll(form);
-        if (!provinces1.isEmpty()) {
-            for (Province province : provinces1) {
-                if (province.getProvinceName() != null)
-                    stringSet.add(province.getProvinceName());
-            }
+        if (addProvince(provinces1) != null) {
+            stringSet.addAll(addProvince(provinces1));
         }
 
         List<Province> provinces2 = provinceService.findByInput(form);
-        if (!provinces2.isEmpty()) {
-            for (Province province : provinces2) {
-                if (province.getProvinceName() != null)
-                    stringSet.add(province.getProvinceName());
-            }
+        if (addProvince(provinces2) != null) {
+            stringSet.addAll(addProvince(provinces2));
         }
+
+
 
         List<District> districts1 = districtService.findAll(form);
-        if (!districts1.isEmpty()) {
-            for (District district : districts1) {
-                if (district.getFullname() != null)
-                    stringSet.add(district.getFullname());
-            }
+        if (addDistrict(districts1) != null) {
+            stringSet.addAll(addDistrict(districts1));
         }
+
 
         List<District> districts2 = districtService.findByInput(form);
-        if (!districts2.isEmpty()) {
-            for (District district : districts2) {
-                if (district.getFullname() != null)
-                    stringSet.add(district.getFullname());
-            }
+        if (addDistrict(districts2) != null) {
+            stringSet.addAll(addDistrict(districts2));
         }
 
-        String wardName = "";
+
         List<Ward> wards1 = wardService.findAll(form);
-        if (!wards1.isEmpty()) {
-            for (Ward ward : wards1) {
-                if (ward.getWardName() != null)
-                    wardName = ward.getUnit() + " " + ward.getWardName();
-                    stringSet.add(wardName);
-            }
+        if (addWard(wards1) != null) {
+            stringSet.addAll(addWard(wards1));
         }
 
 
         List<Ward> wards2 = wardService.findByInput(form);
-        if (!wards2.isEmpty()) {
-            for (Ward ward : wards2) {
-                if (ward.getWardName() != null)
-                    wardName = ward.getUnit() + " " + ward.getWardName();
-                    stringSet.add(wardName);
-            }
+        if (addWard(wards2) != null) {
+            stringSet.addAll(addWard(wards2));
         }
+
 
 
         return stringSet;
